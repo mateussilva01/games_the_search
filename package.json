@@ -1,11 +1,23 @@
 {
-  "name": "backend",
+  "name": "search-api-games",
   "version": "1.0.0",
-  "description": "",
+  "description": "Consumindo uma API de jogos e exibindo os jogos favoritos e, ao clicar em um jogo, visualizar os jogos relacionados a ele.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "repository": {
+    "type": "git"
+  },
+  "keywords": [
+    "api",
+    "javascript",
+    "nodejs"
+  ],
+  "author": "Mateus Silva",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1"
+  }
 }
