@@ -24,7 +24,7 @@ const setGameLoad = (gameEl) => {
 //Função que seta as informações do game numa div
 const setGameHTML = (game) => {
 	let div = document.createElement('div');
-	div.dataset.gamename = game.slug;
+	div.dataset.gamename = game.slug;//obtém o nome do jogo
 	div.className = 'item';
 	div.innerHTML =
 		`
@@ -51,6 +51,7 @@ const initGames = async (gamename) => {
 
 	games.results.forEach(game => {
 		let divGame = setGameHTML(game);
+		//console.log(divGame.textContent);
 
 		//Exibe os jogos relacionados
 		divGame.addEventListener('click', async e => {
