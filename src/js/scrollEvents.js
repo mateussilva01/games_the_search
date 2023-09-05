@@ -11,9 +11,7 @@
 
 		scrollElement.style.cursor = 'grabbing';
 		startX = e.pageX - scrollElement.offsetLeft;
-		//console.log(startX);
 		scrollLeft = scrollElement.scrollLeft;
-		//console.log(scrollLeft);
 	});
 
 	eventsToCursorGrab.forEach(event => {
@@ -27,11 +25,8 @@
 		if (isMousePressed) {
 			e.preventDefault();
 			const infoX = e.pageX - scrollElement.offsetLeft;
-			//console.log(infoX)
 			const distance = (infoX - startX) * 2;
-			//console.log(distance);
 			scrollElement.scrollLeft = scrollLeft - distance;
-			//console.log(scrollElement.scrollLeft = scrollLeft - distance);
 		};
 	});
 

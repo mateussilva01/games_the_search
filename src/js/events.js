@@ -51,7 +51,6 @@ const initGames = async (gamename) => {
 
 	games.results.forEach(game => {
 		let divGame = setGameHTML(game);
-		//console.log(divGame.textContent);
 
 		//Exibe os jogos relacionados
 		divGame.addEventListener('click', async e => {
@@ -79,6 +78,9 @@ const initGames = async (gamename) => {
 };
 
 //Evento acionado quando o elmento perde o foco
-document.querySelector('[type=text]').addEventListener('blur', e => {
-	initGames(e.target.value);
+document.querySelector('[type=text]').addEventListener('keypress', (e) => {
+	if(e.key === "Enter") {
+		e.preventDefault();
+		initGames(e.target.value);
+	}
 });
