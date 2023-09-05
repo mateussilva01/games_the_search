@@ -1,6 +1,6 @@
 //Obtém todos os jogos
 const getGamesByName = async (name) => {
-	const url = `https://api.rawg.io/api/games?key=b7c57e7059524f31ac492a57977f8dc9&search=${name}`;
+	const url = `https://api.rawg.io/api/games?key=${chave}&search=${name}`;
 	return fetch(url)
 		.then((response) => {
 			if (!response.ok) {
@@ -15,7 +15,7 @@ const getGamesByName = async (name) => {
 
 //Obtém os jogos relacionados
 const getRelatedGamesByName = async (name) => {
-	const url = `https://api.rawg.io/api/games?key=b7c57e7059524f31ac492a57977f8dc9&search=${name}/suggested`;
+	const url = `https://api.rawg.io/api/games?key=${chave}&search=${name}/suggested`;
 	return fetch(url)
 		.then((response) => {
 			if(!response.ok) {
