@@ -99,3 +99,25 @@ document.querySelector('[type=text]').addEventListener('keypress', (e) => {
 		initGames(e.target.value);
 	}
 });
+
+//Tema dark/light
+const getTheme = () => localStorage.getItem('theme') || 'light';
+const saveTheme = (theme) => localStorage.setItem('theme', theme);
+const applyTheme = (theme) => document.documentElement.dataset.theme = theme;
+const rotateTheme = (theme) => theme === 'light' ? 'dark' : 'light';
+
+const themeDisplay = document.getElementById('theme');
+const themeToggler = document.getElementById('theme-toggle');
+
+let theme = getTheme();
+applyTheme(theme);
+themeDisplay.innerText = theme;
+
+themeToggler.onclick = () => {
+  const newTheme = rotateTheme(theme);
+  applyTheme(newTheme);
+  themeDisplay.innerText = newTheme;
+  saveTheme(newTheme);
+
+  theme = newTheme;
+};
