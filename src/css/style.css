@@ -1,31 +1,32 @@
 header {
-    margin-top: 20px;
+	margin-top: 20px;
 }
 
 header h2 {
-    margin: 0 0 20px 0;
+	margin: 0 0 20px 0;
 }
 
 header img {
-    width: 100px;
+	width: 100px;
 }
 
 .games .games-list {
-    cursor: grab;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    display: flex;
+	cursor: grab;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	display: flex;
 }
 
 .games .item {
-    margin: 0 15px 0 0;
-    max-width: 130px;
+	margin: 0 15px 0 0;
+	max-width: 530px;
 }
 
 .games .item .card-content {
-    height: 238px
+	height: 138px
 }
 
 .card-image img {
-    height: 100px;
+	width: 300px;
+	height: 250px;
 }

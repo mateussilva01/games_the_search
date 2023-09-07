@@ -28,14 +28,30 @@ const setGameHTML = (game) => {
 	div.className = 'item';
 	div.innerHTML =
 		`
-			<div class="card">
-				<div class="card-image">
-					<img src="${game.background_image}" />
-				</div>
-				<div class="card-content">
-					<p><h5>${game.name}</h5> (${game.released})</p>
-				</div>
-			</div>
+			<!DOCTYPE html>
+			<html lang="pt-Br">
+				<head>
+					<link rel="stylesheet" href="./css/style.css">
+					<style>
+						.card-game {
+							box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+							margin: auto;
+							text-align: center;
+							font-family: arial;
+						}
+					</style>
+				</head>
+				<body>
+					<div class="card-game">
+						<div class="card-image">
+							<img src="${game.background_image}" />
+						</div>
+						<div class="card-content">
+							<p><h5>${game.name}</h5> (${game.released})</p>
+						</div>
+					</div>
+				</body>
+			</html>
     `;
 	return div;
 };
@@ -77,7 +93,6 @@ const initGames = async (gamename) => {
 	});
 };
 
-//Evento acionado quando o elmento perde o foco
 document.querySelector('[type=text]').addEventListener('keypress', (e) => {
 	if(e.key === "Enter") {
 		e.preventDefault();
