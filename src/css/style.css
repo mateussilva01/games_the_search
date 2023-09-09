@@ -1,18 +1,22 @@
+/* Tema */
 :root[data-theme="light"] {
-  color-scheme: light;
-  --text: black;
-  --background: white;
-}
-:root[data-theme="dark"] {
-  color-scheme: dark;
-  --text: white;
-  --background: black;
-}
-body {
-  color: var(--text);
-  background: var(--background);
+	color-scheme: light;
+	--text: black;
+	--background: white;
 }
 
+:root[data-theme="dark"] {
+	color-scheme: dark;
+	--text: #DDDDDD;
+	--background: #15202B;
+}
+
+body {
+	color: var(--text);
+	background: var(--background);
+}
+
+/* Div header */
 header {
 	margin-top: 20px;
 }
@@ -25,6 +29,7 @@ header img {
 	width: 100px;
 }
 
+/* Div games */
 .games .games-list {
 	cursor: grab;
 	overflow-x: hidden;
@@ -38,10 +43,23 @@ header img {
 }
 
 .games .item .card-content {
-	height: 138px
+	height: 200px
 }
 
+.games p,
+h6 {
+	margin-left: 5px;
+}
+
+/* Div card */
 .card-image img {
 	width: 300px;
 	height: 250px;
+}
+
+.card-game {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	margin: auto;
+	text-align: left;
+	font-family: sans-serif;
 }

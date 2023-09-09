@@ -1,7 +1,6 @@
 const gamesListPrincipal = document.querySelector('#games-list-principal');
 const gamesListRelationed = document.querySelector('#games-relationed');
 
-//Função que adiciona um elemento de loading antes de exibir os dados da API
 const setGameLoad = (gameEl) => {
 	gameEl.innerHTML =
 		`
@@ -24,7 +23,7 @@ const setGameLoad = (gameEl) => {
 //Função que seta as informações do game numa div
 const setGameHTML = (game) => {
 	let div = document.createElement('div');
-	div.dataset.gamename = game.slug;//obtém o nome do jogo
+	div.dataset.gamename = game.name;
 	div.className = 'item';
 	div.innerHTML =
 		`
@@ -32,14 +31,6 @@ const setGameHTML = (game) => {
 			<html lang="pt-Br">
 				<head>
 					<link rel="stylesheet" href="./css/style.css">
-					<style>
-						.card-game {
-							box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-							margin: auto;
-							text-align: center;
-							font-family: arial;
-						}
-					</style>
 				</head>
 				<body>
 					<div class="card-game">
@@ -47,7 +38,11 @@ const setGameHTML = (game) => {
 							<img src="${game.background_image}" />
 						</div>
 						<div class="card-content">
-							<p><h5>${game.name}</h5> (${game.released})</p>
+							<h6>${game.name}</h6>
+							<p>Lançamento: ${game.released}</p>
+							<p>Atualizado em: ${game.updated.slice(0, 10)}</p>
+							<p>Classificação: ${game.rating}</p>
+							<p>Avaliação: ${game.metacritic === null ? 'Nenhuma' : game.metacritic}</p>
 						</div>
 					</div>
 				</body>
@@ -57,12 +52,12 @@ const setGameHTML = (game) => {
 };
 
 //Carrega os jogos em uma div
-const initGames = async (gamename) => {
+const initGames = async (gamename, gamegenre) => {
 	setGameLoad(gamesListPrincipal);
 
 	gamesListRelationed.innerHTML = '';
-
 	let games = await getGamesByName(gamename);
+
 	gamesListPrincipal.innerHTML = '';
 
 	games.results.forEach(game => {
@@ -94,13 +89,13 @@ const initGames = async (gamename) => {
 };
 
 document.querySelector('[type=text]').addEventListener('keypress', (e) => {
-	if(e.key === "Enter") {
+	if (e.key === "Enter") {
 		e.preventDefault();
 		initGames(e.target.value);
 	}
 });
 
-//Tema dark/light
+//Tema
 const getTheme = () => localStorage.getItem('theme') || 'light';
 const saveTheme = (theme) => localStorage.setItem('theme', theme);
 const applyTheme = (theme) => document.documentElement.dataset.theme = theme;
@@ -114,10 +109,10 @@ applyTheme(theme);
 themeDisplay.innerText = theme;
 
 themeToggler.onclick = () => {
-  const newTheme = rotateTheme(theme);
-  applyTheme(newTheme);
-  themeDisplay.innerText = newTheme;
-  saveTheme(newTheme);
+	const newTheme = rotateTheme(theme);
+	applyTheme(newTheme);
+	themeDisplay.innerText = newTheme;
+	saveTheme(newTheme);
 
-  theme = newTheme;
+	theme = newTheme;
 };

@@ -18,7 +18,7 @@ const getRelatedGamesByName = async (name) => {
 	const url = `https://api.rawg.io/api/games?key=${chave}&search=${name}/suggested`;
 	return fetch(url)
 		.then((response) => {
-			if(!response.ok) {
+			if (!response.ok) {
 				throw new Error('Requisição não sucedida');
 			}
 			return response.json();
