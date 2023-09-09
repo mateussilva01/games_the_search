@@ -52,7 +52,7 @@ const setGameHTML = (game) => {
 };
 
 //Carrega os jogos em uma div
-const initGames = async (gamename, gamegenre) => {
+const initGames = async (gamename) => {
 	setGameLoad(gamesListPrincipal);
 
 	gamesListRelationed.innerHTML = '';
