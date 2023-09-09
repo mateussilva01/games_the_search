@@ -41,7 +41,7 @@ const setGameHTML = (game) => {
 							<h6>${game.name}</h6>
 							<p>Lançamento: ${game.released}</p>
 							<p>Atualizado em: ${game.updated.slice(0, 10)}</p>
-							<p>Classificação: ${game.rating}</p>
+							<p>Classificação: ${game.rating === 0 ? 'Nenhuma' : game.rating}</p>
 							<p>Avaliação: ${game.metacritic === null ? 'Nenhuma' : game.metacritic}</p>
 						</div>
 					</div>

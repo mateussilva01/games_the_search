@@ -23,6 +23,6 @@ const getRelatedGamesByName = async (name) => {
 			}
 			return response.json();
 		}).catch((error) => {
-			console.error('Houve um problema com a operação de busca:', error)
+			console.error('Houve um problema com a operação de busca:', error);
 		});
 };
