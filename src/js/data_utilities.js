@@ -9,3 +9,8 @@ const formatDate = (elemento) => {
     return '';
   return elemento.slice(0, 10);
 }
+
+const limitText = (texto) => {
+  const limite = 80;
+  return texto.length >= limite ? texto = texto.substring(0, 70) + ' ...' : texto;
+}

@@ -43,7 +43,7 @@ const setGameHTML = (game) => {
 							/>
 						</div>
 						<div class="card-content">
-							<h6>${game.name}</h6>
+							<h6>${limitText(game.name)}</h6>
 							<p>Lançamento: ${formatDate(game.released)}</p>
 							<p>Atualizado em: ${formatDate(game.updated)}</p>
 							<p>Classificação: ${game.rating === 0 ? 'Nenhuma' : game.rating}</p>
