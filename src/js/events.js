@@ -1,6 +1,12 @@
 const gamesListPrincipal = document.querySelector('#games-list-principal');
 const gamesListRelationed = document.querySelector('#games-relationed');
 
+const handleErrorImageNull = (image) => {
+  image.onerror = '';
+  image.src = './img/noimage.png';
+  return true;
+}
+
 const setGameLoad = (gameEl) => {
 	gameEl.innerHTML =
 		`
@@ -35,7 +41,12 @@ const setGameHTML = (game) => {
 				<body>
 					<div class="card-game">
 						<div class="card-image">
-							<img src="${game.background_image}" title="${game.name}" alt="No image Available"/>
+							<img
+								src="${game.background_image}"
+								title="${game.name}"
+								alt="No image available"
+								onerror="handleErrorImageNull(this)"
+							/>
 						</div>
 						<div class="card-content">
 							<h6>${game.name}</h6>
