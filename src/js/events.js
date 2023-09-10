@@ -1,12 +1,6 @@
 const gamesListPrincipal = document.querySelector('#games-list-principal');
 const gamesListRelationed = document.querySelector('#games-relationed');
 
-const handleErrorImageNull = (image) => {
-  image.onerror = '';
-  image.src = './img/noimage.png';
-  return true;
-}
-
 const setGameLoad = (gameEl) => {
 	gameEl.innerHTML =
 		`
@@ -50,8 +44,8 @@ const setGameHTML = (game) => {
 						</div>
 						<div class="card-content">
 							<h6>${game.name}</h6>
-							<p>Lançamento: ${game.released}</p>
-							<p>Atualizado em: ${game.updated.slice(0, 10)}</p>
+							<p>Lançamento: ${formatDate(game.released)}</p>
+							<p>Atualizado em: ${formatDate(game.updated)}</p>
 							<p>Classificação: ${game.rating === 0 ? 'Nenhuma' : game.rating}</p>
 							<p>Avaliação: ${game.metacritic === null ? 'Nenhuma' : game.metacritic}</p>
 						</div>
