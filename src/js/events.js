@@ -1,5 +1,11 @@
 const gamesListPrincipal = document.querySelector('#games-list-principal');
 const gamesListRelationed = document.querySelector('#games-relationed');
+const mainTitle = document.getElementById("main-title");
+const releasedTitle = document.getElementById("released-title");
+
+//Altera cor dos títulos
+const changeMainTitleColor = () => mainTitle.style.color = "#2BBBAD";
+const changeReleasedTitleColor = () => releasedTitle.style.color = "#2BBBAD";
 
 const setGameLoad = (gameEl) => {
 	gameEl.innerHTML =
@@ -20,7 +26,7 @@ const setGameLoad = (gameEl) => {
 	`;
 };
 
-//Função que seta as informações do game numa div
+//Seta as informações dos games
 const setGameHTML = (game) => {
 	let div = document.createElement('div');
 	div.dataset.gamename = game.name;
@@ -40,6 +46,7 @@ const setGameHTML = (game) => {
 								title="${game.name}"
 								alt="No image available"
 								onerror="handleErrorImageNull(this)"
+								onclick="changeReleasedTitleColor()"
 							/>
 						</div>
 						<div class="card-content">
@@ -96,6 +103,7 @@ const initGames = async (gamename) => {
 document.querySelector('[type=text]').addEventListener('keypress', (e) => {
 	if (e.key === "Enter") {
 		e.preventDefault();
+		changeMainTitleColor();
 		initGames(e.target.value);
 	}
 });
