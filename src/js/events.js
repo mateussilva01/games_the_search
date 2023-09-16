@@ -39,14 +39,13 @@ const setGameHTML = (game) => {
 					<link rel="stylesheet" href="./css/style.css">
 				</head>
 				<body>
-					<div class="card-game">
+					<div class="card-game" onclick="changeReleasedTitleColor()">
 						<div class="card-image">
 							<img
 								src="${game.background_image}"
 								title="${game.name}"
 								alt="No image available"
 								onerror="handleErrorImageNull(this)"
-								onclick="changeReleasedTitleColor()"
 							/>
 						</div>
 						<div class="card-content">
