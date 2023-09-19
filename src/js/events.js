@@ -103,6 +103,7 @@ document.querySelector('[type=text]').addEventListener('keypress', (e) => {
 	if (e.key === "Enter") {
 		e.preventDefault();
 		changeMainTitleColor();
+		releasedTitle.style.color = '';
 		initGames(e.target.value);
 	}
 });
