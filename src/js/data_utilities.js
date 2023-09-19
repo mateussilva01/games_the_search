@@ -4,13 +4,15 @@ const handleErrorImageNull = (image) => {
   return true;
 }
 
-const formatDate = (elemento) => {
-  if(!elemento)
+const formatDate = (element) => {
+  let data = new Date(element);
+  let dataFormatada = `${((data.getDate() )) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear()}`;
+  if(!dataFormatada)
     return '';
-  return elemento.slice(0, 10);
+  return dataFormatada.slice(0, 10);
 }
 
-const limitText = (texto) => {
-  const limite = 80;
-  return texto.length >= limite ? texto = texto.substring(0, 70) + ' ...' : texto;
+const limitText = (text) => {
+  const limit = 80;
+  return text.length >= limit ? text.substring(0, 70) + ' ...' : text;
 }
