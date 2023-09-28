@@ -1,3 +1,6 @@
+const changeMainTitleColor = () => mainTitle.style.color = "#2BBBAD";
+const changeReleasedTitleColor = () => releasedTitle.style.color = "#2BBBAD";
+
 const handleErrorImageNull = (image) => {
   image.onerror = '';
   image.src = './img/noimage.png';
@@ -15,4 +18,10 @@ const formatDate = (element) => {
 const limitText = (text) => {
   const limit = 80;
   return text.length >= limit ? text.substring(0, 70) + ' ...' : text;
+}
+
+const clearTitleStyle = () => {
+	const removeStyleTitle = gamesListRelationed.innerHTML = '';
+	if(!removeStyleTitle)
+		releasedTitle.style.color = '';
 }

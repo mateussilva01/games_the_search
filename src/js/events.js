@@ -4,9 +4,27 @@ const mainTitle = document.getElementById("main-title");
 const releasedTitle = document.getElementById("released-title");
 const actionGenre = document.getElementById("action-genre");
 
-//Altera cor dos títulos
-const changeMainTitleColor = () => mainTitle.style.color = "#2BBBAD";
-const changeReleasedTitleColor = () => releasedTitle.style.color = "#2BBBAD";
+//Theme
+const getTheme = () => localStorage.getItem('theme') || 'light';
+const saveTheme = (theme) => localStorage.setItem('theme', theme);
+const applyTheme = (theme) => document.documentElement.dataset.theme = theme;
+const rotateTheme = (theme) => theme === 'light' ? 'dark' : 'light';
+
+const themeDisplay = document.getElementById('theme');
+const themeToggler = document.getElementById('theme-toggle');
+
+let theme = getTheme();
+applyTheme(theme);
+themeDisplay.innerText = theme;
+
+themeToggler.onclick = () => {
+	const newTheme = rotateTheme(theme);
+	applyTheme(newTheme);
+	themeDisplay.innerText = newTheme;
+	saveTheme(newTheme);
+
+	theme = newTheme;
+};
 
 const setGameLoad = (gameEl) => {
 	gameEl.innerHTML =
@@ -68,30 +86,30 @@ const initGames = async (gamename) => {
 	setGameLoad(gamesListPrincipal);
 
 	gamesListRelationed.innerHTML = '';
-	let games = await getGamesByName(gamename);
+	const games = await getGamesByName(gamename);
 
 	gamesListPrincipal.innerHTML = '';
 
 	games.results.forEach(game => {
-		let divGame = setGameHTML(game);
+		const divGame = setGameHTML(game);
 
 		//Exibe os jogos relacionados
 		divGame.addEventListener('click', async e => {
 			setGameLoad(gamesListRelationed);
 
 			//Adicionamos um ouvinte do evento clique em cada elemento de jogo criado - escuta em qual elemento foi clicado
-			let gameTag = e.currentTarget;
+			const gameTag = e.currentTarget;
 
 			//Recupera o nome do jogo que clicamos
-			let gamename = gameTag.dataset.gamename;
-			let gamesRelationed = await getRelatedGamesByName(gamename);
+			const gamename = gameTag.dataset.gamename;
+			const gamesRelationed = await getRelatedGamesByName(gamename);
 
 			//Remove o conteúdo da div que vai conter os novos jogos
 			gamesListRelationed.innerHTML = '';
 
 			//Função que percorre os resultados da API e cria um HTML de cada jogo relacionado
 			gamesRelationed.results.forEach(game => {
-				let divGameRelationed = setGameHTML(game);
+				const divGameRelationed = setGameHTML(game);
 				gamesListRelationed.append(divGameRelationed);
 			});
 		});
@@ -105,32 +123,29 @@ actionGenre.addEventListener('click', async (genre) => {
 	changeMainTitleColor();
 	setGameLoad(gamesListPrincipal);
 
-	let gameTag = genre.currentTarget;
-	let actionNameGenre = gameTag.dataset.gamename;
-	let generos = await getGenres(actionNameGenre);
+	const gameTag = genre.currentTarget;
+	const actionNameGenre = gameTag.dataset.gamename;
+	const generos = await getGenres(actionNameGenre);
 
 	gamesListPrincipal.innerHTML = '';
 
-	const removeStyleTitle = gamesListRelationed.innerHTML = '';
-	if(!removeStyleTitle) {
-		releasedTitle.style.color = '';
-	}
+	clearTitleStyle();
 
 	generos.results.forEach(game => {
-		let divGenresAction = setGameHTML(game);
+		const divGenresAction = setGameHTML(game);
 		gamesListPrincipal.append(divGenresAction);
 
 		divGenresAction.addEventListener('click', async e => {
 			setGameLoad(gamesListRelationed);
 
-			let gameTag = e.currentTarget;
-			let gamename = gameTag.dataset.gamename;
-			let gamesRelationed = await getRelatedGamesByName(gamename);
+			const gameTag = e.currentTarget;
+			const gamename = gameTag.dataset.gamename;
+			const gamesRelationed = await getRelatedGamesByName(gamename);
 
 			gamesListRelationed.innerHTML = '';
 
 			gamesRelationed.results.forEach(game => {
-				let divGameRelationed = setGameHTML(game);
+				const divGameRelationed = setGameHTML(game);
 				gamesListRelationed.append(divGameRelationed);
 			});
 		});
@@ -146,25 +161,3 @@ document.querySelector('[type=text]').addEventListener('keypress', (e) => {
 		initGames(e.target.value);
 	}
 });
-
-//Tema
-const getTheme = () => localStorage.getItem('theme') || 'light';
-const saveTheme = (theme) => localStorage.setItem('theme', theme);
-const applyTheme = (theme) => document.documentElement.dataset.theme = theme;
-const rotateTheme = (theme) => theme === 'light' ? 'dark' : 'light';
-
-const themeDisplay = document.getElementById('theme');
-const themeToggler = document.getElementById('theme-toggle');
-
-let theme = getTheme();
-applyTheme(theme);
-themeDisplay.innerText = theme;
-
-themeToggler.onclick = () => {
-	const newTheme = rotateTheme(theme);
-	applyTheme(newTheme);
-	themeDisplay.innerText = newTheme;
-	saveTheme(newTheme);
-
-	theme = newTheme;
-};
