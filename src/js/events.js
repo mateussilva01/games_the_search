@@ -2,6 +2,7 @@ const gamesListPrincipal = document.querySelector('#games-list-principal');
 const gamesListRelationed = document.querySelector('#games-relationed');
 const mainTitle = document.getElementById("main-title");
 const releasedTitle = document.getElementById("released-title");
+const actionGenre = document.getElementById("action-genre");
 
 //Altera cor dos títulos
 const changeMainTitleColor = () => mainTitle.style.color = "#2BBBAD";
@@ -78,12 +79,11 @@ const initGames = async (gamename) => {
 		divGame.addEventListener('click', async e => {
 			setGameLoad(gamesListRelationed);
 
-			//Adicionamos um ouvinte do evento clique em cada elemento de jogo criado
+			//Adicionamos um ouvinte do evento clique em cada elemento de jogo criado - escuta em qual elemento foi clicado
 			let gameTag = e.currentTarget;
 
 			//Recupera o nome do jogo que clicamos
 			let gamename = gameTag.dataset.gamename;
-
 			let gamesRelationed = await getRelatedGamesByName(gamename);
 
 			//Remove o conteúdo da div que vai conter os novos jogos
@@ -95,9 +95,48 @@ const initGames = async (gamename) => {
 				gamesListRelationed.append(divGameRelationed);
 			});
 		});
+
+		//adicionamos os games(divGames) em gamesListPrincipal
 		gamesListPrincipal.append(divGame);
 	});
 };
+
+actionGenre.addEventListener('click', async (genre) => {
+	changeMainTitleColor();
+	setGameLoad(gamesListPrincipal);
+
+	let gameTag = genre.currentTarget;
+	let actionNameGenre = gameTag.dataset.gamename;
+	let generos = await getGenres(actionNameGenre);
+
+	gamesListPrincipal.innerHTML = '';
+
+	const removeStyleTitle = gamesListRelationed.innerHTML = '';
+	if(!removeStyleTitle) {
+		releasedTitle.style.color = '';
+	}
+
+	generos.results.forEach(game => {
+		let divGenresAction = setGameHTML(game);
+		gamesListPrincipal.append(divGenresAction);
+
+		divGenresAction.addEventListener('click', async e => {
+			setGameLoad(gamesListRelationed);
+
+			let gameTag = e.currentTarget;
+			let gamename = gameTag.dataset.gamename;
+			let gamesRelationed = await getRelatedGamesByName(gamename);
+
+			gamesListRelationed.innerHTML = '';
+
+			gamesRelationed.results.forEach(game => {
+				let divGameRelationed = setGameHTML(game);
+				gamesListRelationed.append(divGameRelationed);
+			});
+		});
+		gamesListPrincipal.append(divGenresAction);
+	});
+});
 
 document.querySelector('[type=text]').addEventListener('keypress', (e) => {
 	if (e.key === "Enter") {
