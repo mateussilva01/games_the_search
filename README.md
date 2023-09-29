@@ -1,12 +1,13 @@
 # games_the_search
 
 ## Descrição do projeto
-A aplicação foi desenvolvida utilizando a função nativa fetch API do javascript, que por meio de uma URL faço uma requisição HTTP a API de jogos do site rawg.io, e obtenho uma promise de retorno, pois quando os recursos estiverem prontos, serem exibidos na tela. Em outras palavras, ao buscar por um jogo no campo de pesquisa,
-retornar uma lista de jogos, que ao clicar em algum, exibir os jogos relacionados.
+A aplicação foi desenvolvida fazendo uso da função nativa fetch API do JavaScript. Essa função permite que, por meio de uma URL, seja feita uma requisição HTTP à API de jogos do site rawg.io, resultando em uma promise de retorno. Assim, quando os recursos estiverem prontos, eles são exibidos na tela. Em termos simples, ao efetuar uma busca por um jogo no campo de pesquisa, a aplicação retorna uma lista de jogos. Ao clicar em um deles, são exibidos os jogos relacionados.
 
 <p align="center">
-  <img src="src/img/gamer1.png" width="400" height="300" title="hover text">
-  <img src="src/img/gamer2.png" width="400" height="300" alt="accessibility text">
+  <img src="src/img/gamer4.png" width="400" height="300" title="hover text">
+  <img src="src/img/gamer5.png" width="400" height="300" alt="accessibility text">
+  <img src="src/img/gamer6.png" width="400" height="300" title="hover text">
+  <img src="src/img/gamer7.png" width="400" height="300" alt="accessibility text">
 </p>
 
 ## Executar aplicação
