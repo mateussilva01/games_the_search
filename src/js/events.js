@@ -81,7 +81,7 @@ const setGameHTML = (game) => {
 	return div;
 };
 
-//Carrega os jogos em uma div
+//Load games in an div
 const initGames = async (gamename) => {
 	setGameLoad(gamesListPrincipal);
 
@@ -93,43 +93,38 @@ const initGames = async (gamename) => {
 	games.results.forEach(game => {
 		const divGame = setGameHTML(game);
 
-		//Exibe os jogos relacionados
+		//Event to show relationed games
 		divGame.addEventListener('click', async e => {
 			setGameLoad(gamesListRelationed);
 
-			//Adicionamos um ouvinte do evento clique em cada elemento de jogo criado - escuta em qual elemento foi clicado
+			//Get the element that triggered the event
 			const gameTag = e.currentTarget;
 
-			//Recupera o nome do jogo que clicamos
+			//Retrieve game name clicked
 			const gamename = gameTag.dataset.gamename;
 			const gamesRelationed = await getRelatedGamesByName(gamename);
 
-			//Remove o conteúdo da div que vai conter os novos jogos
+			//Remove div content if exist
 			gamesListRelationed.innerHTML = '';
 
-			//Função que percorre os resultados da API e cria um HTML de cada jogo relacionado
+			//Create an HTML to each relationed game
 			gamesRelationed.results.forEach(game => {
 				const divGameRelationed = setGameHTML(game);
 				gamesListRelationed.append(divGameRelationed);
 			});
 		});
-
-		//adicionamos os games(divGames) em gamesListPrincipal
+		//Add games in an div
 		gamesListPrincipal.append(divGame);
 	});
 };
 
 actionGenre.addEventListener('click', async (genre) => {
-	changeMainTitleColor();
+	checkIfExistContent();
 	setGameLoad(gamesListPrincipal);
 
-	const gameTag = genre.currentTarget;
-	const actionNameGenre = gameTag.dataset.gamename;
-	const generos = await getGenres(actionNameGenre);
+	const generos = await getGenres(genre);
 
 	gamesListPrincipal.innerHTML = '';
-
-	clearTitleStyle();
 
 	generos.results.forEach(game => {
 		const divGenresAction = setGameHTML(game);
@@ -156,8 +151,7 @@ actionGenre.addEventListener('click', async (genre) => {
 document.querySelector('[type=text]').addEventListener('keypress', (e) => {
 	if (e.key === "Enter") {
 		e.preventDefault();
-		changeMainTitleColor();
-		releasedTitle.style.color = '';
+		checkIfExistContent();
 		initGames(e.target.value);
 	}
 });

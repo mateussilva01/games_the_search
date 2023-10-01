@@ -9,8 +9,8 @@ const handleErrorImageNull = (image) => {
 
 const formatDate = (element) => {
   let data = new Date(element);
-  let dataFormatada = `${((data.getDate() )) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear()}`;
-  if(!dataFormatada)
+  let dataFormatada = `${((data.getDate())) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear()}`;
+  if (!dataFormatada)
     return '';
   return dataFormatada.slice(0, 10);
 }
@@ -20,8 +20,10 @@ const limitText = (text) => {
   return text.length >= limit ? text.substring(0, 70) + ' ...' : text;
 }
 
-const clearTitleStyle = () => {
-	const removeStyleTitle = gamesListRelationed.innerHTML = '';
-	if(!removeStyleTitle)
-		releasedTitle.style.color = '';
+const checkIfExistContent = () => {
+  const getDivContent = gamesListRelationed.innerHTML = '';
+  if (!getDivContent) {
+    changeMainTitleColor();
+    releasedTitle.style.color = '';
+  }
 }
