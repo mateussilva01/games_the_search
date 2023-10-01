@@ -3,6 +3,8 @@ const gamesListRelationed = document.querySelector('#games-relationed');
 const mainTitle = document.getElementById("main-title");
 const releasedTitle = document.getElementById("released-title");
 const actionGenre = document.getElementById("action-genre");
+const strategyGenre = document.getElementById("strategy-genre");
+const rpgGenre = document.getElementById("rpg-genre");
 
 //Theme
 const getTheme = () => localStorage.getItem('theme') || 'light';
@@ -45,7 +47,7 @@ const setGameLoad = (gameEl) => {
 	`;
 };
 
-//Seta as informações dos games
+//Set data the games
 const setGameHTML = (game) => {
 	let div = document.createElement('div');
 	div.dataset.gamename = game.name;
@@ -118,15 +120,15 @@ const initGames = async (gamename) => {
 	});
 };
 
-actionGenre.addEventListener('click', async (genre) => {
+actionGenre.addEventListener('click', async (actionGenre) => {
 	checkIfExistContent();
 	setGameLoad(gamesListPrincipal);
 
-	const generos = await getGenres(genre);
+	const genre = await getActionGenre(actionGenre);
 
 	gamesListPrincipal.innerHTML = '';
 
-	generos.results.forEach(game => {
+	genre.results.forEach(game => {
 		const divGenresAction = setGameHTML(game);
 		gamesListPrincipal.append(divGenresAction);
 
@@ -145,6 +147,66 @@ actionGenre.addEventListener('click', async (genre) => {
 			});
 		});
 		gamesListPrincipal.append(divGenresAction);
+	});
+});
+
+strategyGenre.addEventListener('click', async (strategyGenre) => {
+	checkIfExistContent();
+	setGameLoad(gamesListPrincipal);
+
+	const genre = await getStrategyGenre(strategyGenre);
+
+	gamesListPrincipal.innerHTML = '';
+
+	genre.results.forEach(game => {
+		const divStrategyGenre = setGameHTML(game);
+		gamesListPrincipal.append(divStrategyGenre);
+
+		divStrategyGenre.addEventListener('click', async e => {
+			setGameLoad(gamesListRelationed);
+
+			const gameTag = e.currentTarget;
+			const gamename = gameTag.dataset.gamename;
+			const gamesRelationed = await getRelatedGamesByName(gamename);
+
+			gamesListRelationed.innerHTML = '';
+
+			gamesRelationed.results.forEach(game => {
+				const divGameRelationed = setGameHTML(game);
+				gamesListRelationed.append(divGameRelationed);
+			});
+		});
+		gamesListPrincipal.append(divStrategyGenre);
+	});
+});
+
+rpgGenre.addEventListener('click', async (rpgGenre) => {
+	checkIfExistContent();
+	setGameLoad(gamesListPrincipal);
+
+	const genre = await getRpgGenre(rpgGenre);
+
+	gamesListPrincipal.innerHTML = '';
+
+	genre.results.forEach(game => {
+		const divRpgGenre = setGameHTML(game);
+		gamesListPrincipal.append(divRpgGenre);
+
+		divRpgGenre.addEventListener('click', async e => {
+			setGameLoad(gamesListRelationed);
+
+			const gameTag = e.currentTarget;
+			const gamename = gameTag.dataset.gamename;
+			const gamesRelationed = await getRelatedGamesByName(gamename);
+
+			gamesListRelationed.innerHTML = '';
+
+			gamesRelationed.results.forEach(game => {
+				const divGameRelationed = setGameHTML(game);
+				gamesListRelationed.append(divGameRelationed);
+			});
+		});
+		gamesListPrincipal.append(divRpgGenre);
 	});
 });
 
