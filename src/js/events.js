@@ -63,6 +63,7 @@ const setGameHTML = (game) => {
 					<div class="card-game" onclick="changeReleasedTitleColor()">
 						<div class="card-image">
 							<img
+								id="image-game"
 								src="${game.background_image}"
 								title="${game.name}"
 								alt="No image available"
