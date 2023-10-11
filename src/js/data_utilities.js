@@ -7,12 +7,24 @@ const handleErrorImageNull = (image) => {
   return true;
 }
 
+const addZeroInDate = (number) => {
+  if (number <= 9)
+    return '0' + number;
+  else
+    return number;
+}
+
 const formatDate = (element) => {
   let data = new Date(element);
-  let dataFormatada = `${((data.getDate())) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear()}`;
-  if (!dataFormatada)
+  let day = (data.getDate().toString());
+  let month = ((data.getMonth()+1).toString());
+  let year = (data.getFullYear());
+  let getFormatDate = (addZeroInDate(day) + "/" + (addZeroInDate(month)) + "/" + year);
+  let showFormatDate = getFormatDate.slice(0, 10);
+
+  if (!showFormatDate)
     return '';
-  return dataFormatada.slice(0, 10);
+  return showFormatDate;
 }
 
 const limitText = (text) => {
