@@ -7,37 +7,33 @@
 	<title>Search Games</title>
 	<link rel="stylesheet" href="./css/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body class="light">
 	<div class="container">
-		<nav style="background-color: #DDDDDD;">
-			<div class="nav-wrapper">
-				<a href="#" class="brand-logo left">
-					<img
-						class="logo"
-						src="./img/logo.gif"
-						title="Illustration by Dani Vinogradova"
-						alt="Logo gamer"
-					>
-				</a>
-				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					<li>
-						<button
-							class="waves-effect waves-light btn-small"
-							id="theme-toggle"
-							style="margin-right: 5px;"
-						>
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="navbar-items">
+					<a href="#" class="navbar-brand">
+						<div class="brand-logo">
+							<img class="logo" src="./img/logo.gif" title="Illustration by Dani Vinogradova" alt="Logo gamer">
+						</div>
+						<b class="navbar-title">App Search Games</b>
+					</a>
+				</div>
+				<div class="navbar-items navbar-items-right">
+					<div class="button-theme">
+						<button id="theme-toggle" class="waves-effect waves-light btn-small">
 							<span id="theme">light</span>
 						</button>
-					</li>
-				</ul>
+					</div>
+				</div>
 			</div>
-		</nav>
+		</div>
 		<br>
-		<header class="center-align">
-			<h4>App Search Games</h4>
-		</header>
+		<br>
+		<br>
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">search</i>
@@ -47,7 +43,8 @@
 		</div>
 		<div class="games">
 			<button id="action-genre" class="waves-effect waves-light btn-small" onclick="getActionGenre()">Corrida</button>
-			<button id="strategy-genre" class="waves-effect waves-light btn-small" onclick="getStrategyGenre()">Estratégia</button>
+			<button id="strategy-genre" class="waves-effect waves-light btn-small"
+				onclick="getStrategyGenre()">Estratégia</button>
 			<button id="rpg-genre" class="waves-effect waves-light btn-small" onclick="getRpgGenre()">RPG</button>
 			<h4 id="main-title"><i class="material-icons prefix">videogame_asset</i> Jogos</h4>
 			<div class="games-list" id="games-list-principal"></div>
@@ -56,15 +53,15 @@
 			<div id="games-relationed" class="games-list"></div>
 			<hr>
 		</div>
+		<p style="text-align: center;">Illustration by
+			<a href="https://icons8.com/illustrations/author/JTmm71Rqvb2T">
+				Dani Vinogradova
+			</a> from
+			<a href="https://icons8.com/illustrations">
+				Ouch!
+			</a>
+		</p>
 	</div>
-	<p style="text-align: center;">Illustration by
-		<a href="https://icons8.com/illustrations/author/JTmm71Rqvb2T">
-			Dani Vinogradova
-		</a> from
-		<a href="https://icons8.com/illustrations">
-			Ouch!
-		</a>
-	</p>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script src="js/data_utilities.js"></script>
 	<script src="js/events.js"></script>
