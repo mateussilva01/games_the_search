@@ -7,12 +7,9 @@ const handleErrorImageNull = (image) => {
   return true;
 }
 
-const addZeroInDate = (number) => {
-  if (number <= 9)
-    return '0' + number;
-  else
-    return number;
-}
+const checkValueIfNullOrZero = value =>  value === 0 ? 'Nenhuma' : value ?? 'Nenhuma';
+
+const addZeroInDate = number => number <= 9 ? number = `0${number}` : number;
 
 const formatDate = (element) => {
   let data = new Date(element);

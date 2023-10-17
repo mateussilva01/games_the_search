@@ -74,8 +74,8 @@ const setGameHTML = (game) => {
 							<h6>${limitText(game.name)}</h6>
 							<p><i class="tiny material-icons">new_releases</i> Lançamento: ${formatDate(game.released)}</p>
 							<p><i class="tiny material-icons">update</i> Atualizado em: ${formatDate(game.updated)}</p>
-							<p><i class="tiny material-icons">star</i> Classificação: ${game.rating === 0 ? 'Nenhuma' : game.rating}</p>
-							<p><i class="tiny material-icons">tag_faces</i> Avaliação: ${game.metacritic === null ? 'Nenhuma' : game.metacritic}</p>
+							<p><i class="tiny material-icons">star</i> Classificação: ${checkValueIfNullOrZero(game.rating)}</p>
+							<p><i class="tiny material-icons">tag_faces</i> Avaliação: ${checkValueIfNullOrZero(game.metacritic)}</p>
 						</div>
 					</div>
 				</body>
