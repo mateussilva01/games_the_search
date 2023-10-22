@@ -19,9 +19,9 @@ const formatDate = (element) => {
   let getFormatDate = (addZeroInDate(day) + "/" + (addZeroInDate(month)) + "/" + year);
   let showFormatDate = getFormatDate.slice(0, 10);
 
-  if (!showFormatDate)
-    return '';
-  return showFormatDate;
+  const result = !showFormatDate ? '' : showFormatDate;
+
+  return result;
 }
 
 const limitText = (text) => {

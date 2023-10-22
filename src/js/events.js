@@ -29,9 +29,9 @@ themeToggler.onclick = () => {
 };
 
 const setGameLoad = (gameEl) => {
-	gameEl.innerHTML =
+	const loadSpinner = gameEl.innerHTML +=
 		`
-			<div class="preloader-wrapper active" style="position: absolute; left: 50%; margin-top: 30px">
+			<div class="preloader-wrapper active">
 				<div class="spinner-layer spinner-blue-only">
 					<div class="circle-clipper left">
 						<div class="circle"></div>
@@ -45,6 +45,7 @@ const setGameLoad = (gameEl) => {
 				</div>
 			</div>
 	`;
+	return loadSpinner;
 };
 
 //Set data the games
@@ -52,7 +53,7 @@ const setGameHTML = (game) => {
 	let div = document.createElement('div');
 	div.dataset.gamename = game.name;
 	div.className = 'item';
-	div.innerHTML =
+	div.innerHTML +=
 		`
 			<!DOCTYPE html>
 			<html lang="pt-Br">
