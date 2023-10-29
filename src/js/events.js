@@ -85,7 +85,7 @@ const setGameHTML = (game) => {
 	return div;
 };
 
-//Load games in an div
+//Load games in a div
 const initGames = async (gamename) => {
 	setGameLoad(gamesListPrincipal);
 
@@ -111,13 +111,13 @@ const initGames = async (gamename) => {
 			//Remove div content if exist
 			gamesListRelationed.innerHTML = '';
 
-			//Create an HTML to each relationed game
+			//Create a HTML to each relationed game
 			gamesRelationed.results.forEach(game => {
 				const divGameRelationed = setGameHTML(game);
 				gamesListRelationed.append(divGameRelationed);
 			});
 		});
-		//Add games in an div
+		//Add games in a div
 		gamesListPrincipal.append(divGame);
 	});
 };
