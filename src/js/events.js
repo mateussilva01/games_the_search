@@ -88,29 +88,21 @@ const setGameHTML = (game) => {
 //Load games in a div
 const initGames = async (gamename) => {
 	setGameLoad(gamesListPrincipal);
-
 	gamesListRelationed.innerHTML = '';
 	const games = await getGamesByName(gamename);
-
 	gamesListPrincipal.innerHTML = '';
-
 	games.results.forEach(game => {
 		const divGame = setGameHTML(game);
-
 		//Event to show relationed games
 		divGame.addEventListener('click', async e => {
 			setGameLoad(gamesListRelationed);
-
 			//Get the element that triggered the event
 			const gameTag = e.currentTarget;
-
 			//Retrieve game name clicked
 			const gamename = gameTag.dataset.gamename;
 			const gamesRelationed = await getRelatedGamesByName(gamename);
-
 			//Remove div content if exist
 			gamesListRelationed.innerHTML = '';
-
 			//Create a HTML to each relationed game
 			gamesRelationed.results.forEach(game => {
 				const divGameRelationed = setGameHTML(game);
@@ -125,24 +117,17 @@ const initGames = async (gamename) => {
 actionGenre.addEventListener('click', async (actionGenre) => {
 	checkIfExistContent();
 	setGameLoad(gamesListPrincipal);
-
 	const genre = await getActionGenre(actionGenre);
-
 	gamesListPrincipal.innerHTML = '';
-
 	genre.results.forEach(game => {
 		const divGenresAction = setGameHTML(game);
 		gamesListPrincipal.append(divGenresAction);
-
 		divGenresAction.addEventListener('click', async e => {
 			setGameLoad(gamesListRelationed);
-
 			const gameTag = e.currentTarget;
 			const gamename = gameTag.dataset.gamename;
 			const gamesRelationed = await getRelatedGamesByName(gamename);
-
 			gamesListRelationed.innerHTML = '';
-
 			gamesRelationed.results.forEach(game => {
 				const divGameRelationed = setGameHTML(game);
 				gamesListRelationed.append(divGameRelationed);
@@ -155,24 +140,17 @@ actionGenre.addEventListener('click', async (actionGenre) => {
 strategyGenre.addEventListener('click', async (strategyGenre) => {
 	checkIfExistContent();
 	setGameLoad(gamesListPrincipal);
-
 	const genre = await getStrategyGenre(strategyGenre);
-
 	gamesListPrincipal.innerHTML = '';
-
 	genre.results.forEach(game => {
 		const divStrategyGenre = setGameHTML(game);
 		gamesListPrincipal.append(divStrategyGenre);
-
 		divStrategyGenre.addEventListener('click', async e => {
 			setGameLoad(gamesListRelationed);
-
 			const gameTag = e.currentTarget;
 			const gamename = gameTag.dataset.gamename;
 			const gamesRelationed = await getRelatedGamesByName(gamename);
-
 			gamesListRelationed.innerHTML = '';
-
 			gamesRelationed.results.forEach(game => {
 				const divGameRelationed = setGameHTML(game);
 				gamesListRelationed.append(divGameRelationed);
@@ -185,24 +163,17 @@ strategyGenre.addEventListener('click', async (strategyGenre) => {
 rpgGenre.addEventListener('click', async (rpgGenre) => {
 	checkIfExistContent();
 	setGameLoad(gamesListPrincipal);
-
 	const genre = await getRpgGenre(rpgGenre);
-
 	gamesListPrincipal.innerHTML = '';
-
 	genre.results.forEach(game => {
 		const divRpgGenre = setGameHTML(game);
 		gamesListPrincipal.append(divRpgGenre);
-
 		divRpgGenre.addEventListener('click', async e => {
 			setGameLoad(gamesListRelationed);
-
 			const gameTag = e.currentTarget;
 			const gamename = gameTag.dataset.gamename;
 			const gamesRelationed = await getRelatedGamesByName(gamename);
-
 			gamesListRelationed.innerHTML = '';
-
 			gamesRelationed.results.forEach(game => {
 				const divGameRelationed = setGameHTML(game);
 				gamesListRelationed.append(divGameRelationed);
