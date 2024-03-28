@@ -9,8 +9,6 @@ const handleErrorImageNull = (image) => {
 
 const checkValueIfNullOrZero = value =>  value === 0 ? 'Nenhuma' : value ?? 'Nenhuma';
 
-const addZeroInDate = number => number <= 9 ? number = `0${number}` : number;
-
 const formatDate = (date) => date ? new Date(date).toLocaleDateString('pt-BR') : new Date().toLocaleDateString('pt-BR');
 
 const limitText = (text) => {
